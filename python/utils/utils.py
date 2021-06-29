@@ -143,6 +143,43 @@ def plot_nodes_plane(nodes):
   plt.scatter(X_or, Y_or, color='r')
   plt.scatter(X_de, Y_de, color='k')
   plt.show()
+  
+  
+def plot_nodes(network):
+    X = np.array([node.pos_x for node in network[0:-1]])
+    Y = np.array([node.pos_y for node in network[0:-1]])
+    # X, Y = grid(x, y)
+    plt.scatter(X, Y, color='b')
+
+    # print BS
+    X = [network.get_BS().pos_x]
+    Y = [network.get_BS().pos_y]
+    plt.scatter(X, Y, color='r', marker='x', s=80)
+
+    plt.xlim(xmin=0)
+    plt.ylim(ymin=0)
+    plt.xlim(xmax=cf.AREA_WIDTH)
+    plt.ylim(ymax=cf.AREA_LENGTH)
+    plt.show()
+
+
+'''
+def plot_nodes(network):
+  # colors = ['b', 'k', 'y', 'g', 'm', 'c', 'r', 'pick', 'orange']
+  plt.figure()
+  for node_id in range(0, cf.AREA_LENGTH):
+    node = network.get_nodes_by_membership(node_id, only_alives=0)
+    X = [node.pos_x for node_ind in node]
+    Y = [node.pos_y for node_ind in node]
+    plt.scatter(X, Y, color='b')
+    )
+  # print BS
+  X = [network.get_BS().pos_x]
+  Y = [network.get_BS().pos_y]
+  plt.scatter(X, Y, color='r', marker='x', s=80)
+'''
+
+
 
 def plot_clusters(network):
   colors = ['b', 'k', 'y', 'g', 'm', 'c']
